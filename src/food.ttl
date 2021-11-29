@@ -1,0 +1,74 @@
+# An ontology of Food for tracking allergies
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix : <https://w3.org/ns/pim/food#>.
+@prefix food: <https://w3.org/ns/pim/food#>. # @@ claim the space
+
+<> a owl:Ontology;
+dc:title "An Onology for Food Allergies";
+s:comment """... """ .
+
+:FoodItem a s:Class;
+  s:label "food iteam"@en.
+
+:Allergen a s:Class; = <https://www.wikidata.org/wiki/Q186752>;
+  s:label "allergen"@en, "allergène"@fr, "allergen"@de.
+
+
+:Crustaeans a s:Class; s:subClassOf :Allergen;
+  s:label "crusteans"@en,""@fr.
+
+# https://www.food.gov.uk/business-guidance/allergen-labelling-for-food-manufacturers
+:MainAllergen a s:Class; s:subcClassOf :Allergen;
+  s:label "main allergen";
+  s:comment """One of the 14 main alergens in the UK government guidance""" ;
+  owl:disjointUnionOf
+( :Celery
+:Gluten
+:Crustaceans
+:Eggs
+:Fish
+:Moluscs
+:Mustard
+:Nuts
+:Peanuts
+:Sesame
+:Soybeans
+:Sulphites ) .
+
+:Celery a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "celery"@en .
+:Gluten a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "gluten"@en. # WHEAT?
+:Crustaceans a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "crustaceans"@en .
+:Eggs a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "eggs"@en .
+:Fish a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "fish"@en .
+:Moluscs a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "moluscs"@en .
+:Mustard a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "mustard"@en .
+:Nuts a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "tree nuts"@en .
+:Peanuts a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "peanuts"@en .
+:Sesame a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "sesame"@en .
+:Soybeans a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "soybeans"@en .
+:Sulphites  a s:Class; s:subClassOf :MainAllergen, :Allergen; s:label "sulphites"@en .
+
+##### Fench labels
+#
+# From Google Translate and the english
+
+:Allergen s:label "allergène"@fr.
+
+:Celery s:label "celery"@fr .
+:Gluten s:label "gluten"@fr. # WHEAT
+:Crustaceans s:label "crustacés"@fr .
+:Eggs s:label "oeuf"@fr .
+:Fish s:label "poisson"@fr .
+:Moluscs s:label "molusques"@fr .
+:Mustard s:label "moutarde"@fr .
+:Nuts s:label "noix"@fr .
+:Peanuts s:label "cacahuètes"@fr .
+:Sesame s:label "sésame"@fr .
+:Soybeans s:label "soja"@fr .
+:Sulphites  s:label "sulfites"@fr .
+
+# ENDS
